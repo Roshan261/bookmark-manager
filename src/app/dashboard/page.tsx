@@ -1,48 +1,5 @@
-// 'use client';
-// import { useSupabase } from '@/components/SupabaseProvider';
-// import { supabase } from '@/lib/supabase';
-// import { useRouter } from 'next/navigation';
-// import { useEffect } from 'react';
-// import BookmarkList from '@/components/BookmarkList';
-
-// export default function Dashboard() {
-//   const { user, loading } = useSupabase();
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     if (loading) return;
-//     if (!user) router.push('/login');
-//   }, [user, loading, router]);
-
-//   const handleLogout = async () => {
-//     await supabase.auth.signOut();
-//     router.push('/login');
-//   };
-
-//   if (loading) return <div>Loading...</div>;
-//   if (!user) return null;
-
-//   return (
-//     <div className="min-h-screen bg-gray-900 text-gray-100 p-8">
-//       {/* Header */}
-//       <div className="flex justify-between items-center mb-6 max-w-5xl mx-auto">
-//         <h1 className="text-3xl font-bold">Dashboard</h1>
-//         <button
-//           onClick={handleLogout}
-//           className="bg-gray-700 hover:bg-gray-600 transition px-4 py-2 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-500"
-//         >
-//           Logout
-//         </button>
-//       </div>
-
-//       {/* Main content container */}
-//       <main className="max-w-5xl mx-auto bg-gray-800 rounded-lg p-6 shadow-lg">
-//         <BookmarkList />
-//       </main>
-//     </div>
-//   );
-// }
 'use client';
+
 import { useSupabase } from '@/components/SupabaseProvider';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
@@ -60,37 +17,49 @@ export default function Dashboard() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    // Removed router.push('/login') here.
-    // The useEffect above will handle redirecting to /login once user becomes null.
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white">
+        Loading...
+      </div>
+    );
+
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-8">
+    <div className="min-h-screen bg-gray-900 text-gray-100 px-4 sm:px-6 lg:px-8 py-6">
+
       {/* Header */}
-      <div className="flex justify-between items-center mb-6 max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <div className="flex items-center space-x-4">
-          {/* User email display */}
-          <span className="text-gray-400 text-sm truncate max-w-xs" title={user.email}>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 max-w-5xl mx-auto">
+
+        <h1 className="text-2xl sm:text-3xl font-bold text-center sm:text-left">
+          Dashboard
+        </h1>
+
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+
+          <span className="text-gray-400 text-xs sm:text-sm break-all text-center sm:text-right">
             Signed in as: {user.email}
           </span>
-          {/* Logout button */}
+
           <button
             onClick={handleLogout}
-            className="bg-gray-700 hover:bg-gray-600 transition px-4 py-2 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-500"
+            className="w-full sm:w-auto bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded transition"
           >
             Logout
           </button>
+
         </div>
+
       </div>
 
-      {/* Main content container */}
-      <main className="max-w-5xl mx-auto bg-gray-800 rounded-lg p-6 shadow-lg">
+      {/* Main */}
+      <main className="w-full max-w-5xl mx-auto bg-gray-800 rounded-lg p-4 sm:p-6 shadow-lg">
         <BookmarkList />
       </main>
+
     </div>
   );
 }

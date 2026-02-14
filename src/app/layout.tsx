@@ -11,8 +11,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <SupabaseProvider>{children}</SupabaseProvider>
+      <body
+        className={`${inter.className} min-h-screen w-full bg-gray-900 text-gray-100 overflow-x-hidden`}
+      >
+        <SupabaseProvider>
+          <div className="min-h-screen w-full flex flex-col">
+            {children}
+          </div>
+        </SupabaseProvider>
       </body>
     </html>
   );
