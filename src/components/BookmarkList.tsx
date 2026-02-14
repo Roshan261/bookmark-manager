@@ -85,7 +85,7 @@ export default function BookmarkList() {
   return (
     <div className="w-full text-gray-100">
 
-      {/* Form */}
+     
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
 
         <input
@@ -113,7 +113,7 @@ export default function BookmarkList() {
 
       </div>
 
-      {/* List */}
+      
       <ul className="space-y-3">
 
         {bookmarks.length === 0 ? (

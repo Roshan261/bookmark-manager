@@ -31,7 +31,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 px-4 sm:px-6 lg:px-8 py-6">
 
-      {/* Header */}
+  
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 max-w-5xl mx-auto">
 
         <h1 className="text-2xl sm:text-3xl font-bold text-center sm:text-left">
@@ -55,7 +55,7 @@ export default function Dashboard() {
 
       </div>
 
-      {/* Main */}
+     
       <main className="w-full max-w-5xl mx-auto bg-gray-800 rounded-lg p-4 sm:p-6 shadow-lg">
         <BookmarkList />
       </main>
