@@ -56,9 +56,6 @@ This project demonstrates authentication, realtime database subscriptions, respo
 
 # 🐛 Challenges Faced & How They Were Solved
 
-This section demonstrates real debugging and system understanding.
-
----
 
 ## 1️⃣ Realtime WebSocket kept timing out
 
